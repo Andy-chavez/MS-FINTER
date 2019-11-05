@@ -17,23 +17,33 @@ def newtonProgre(listaX, listaY):
 	longX = len(listaX)
 	longY = len(listaY)
 
-	matrizDeCoeficientes = [[ 0 for i in range(longX)] for j in range(longY) ] 
+	#Inicializo la matriz
+	matrizDeCoeficientes = [[ 0 for i in range(longX+1)] for j in range(longY+1) ] 
 
-	#Paso las X
+	#Seteo las X
 	for i in range (longX):
 		matrizDeCoeficientes[i][0] = listaX[i]
 
-	#Paso las Y
-	for i in range (len(listaY)):
+	#Seteo las Y
+	for i in range (longY):
 		matrizDeCoeficientes[i][1] = listaY[i]
+
+	#Calculo las diferencias
+	for i in range (1,longX):
+		k = i - 1
+		for j in range (longX - i):
+			matrizDeCoeficientes[j][i+1] = (matrizDeCoeficientes[j+1][i] - matrizDeCoeficientes[j][i])/(matrizDeCoeficientes[j+1+k][0] - matrizDeCoeficientes[j][0])
 
 	print(matrizDeCoeficientes)
 
+
+#main para ir haciendo pruebitas
 def main():
-	newtonProgre([1,2],[3,4])
+	newtonProgre([1,2,3,4],[4,15,40,85])
 
 if __name__ == "__main__":
     main()
 
+#import numpy as np --> np.NombreDeFuncionDeNumpy --> Te deja usar la funcion
 #poly1d([1,2],True) genera el polinomio de las raices [1,2]
 #poly1d([1,2]) arma el polinomio con esos coeficientes (x+2)(decreciente)
