@@ -34,8 +34,15 @@ def newtonProgre(listaX, listaY):
 		for j in range (longX - i):
 			matrizDeCoeficientes[j][i+1] = (matrizDeCoeficientes[j+1][i] - matrizDeCoeficientes[j][i])/(matrizDeCoeficientes[j+1+k][0] - matrizDeCoeficientes[j][0])
 
-	print(matrizDeCoeficientes)
+	raices = 1
+	pol = 0
+	for k in range(longX):
+		for i in range(k):
+			raices = np.poly1d(matrizDeCoeficientes[i][0], True) * raices
 
+		pol = pol + raices * matrizDeCoeficientes[0][k+1]
+		raices = 1
+		print(pol)
 
 #main para ir haciendo pruebitas
 def main():
