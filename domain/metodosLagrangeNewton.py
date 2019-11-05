@@ -11,6 +11,49 @@ class MetodoLagrange:
     def especializarEnPto(self, numero) :
         return self.calcularPolinomio(self)(numero)
 
+def newtonRegre(listaX, listaY):
+	matrizDeCoeficientes = []
+
+	longX = len(listaX)
+	longY = len(listaY)
+
+	# Inicializo la matriz
+	matrizDeCoeficientes = [[0 for i in range(longX + 1)] for j in range(longY + 1)]
+
+	# Seteo las X
+	j = longX-1
+	y = longY-1
+	for i in range(longX):
+		matrizDeCoeficientes[i][0] = listaX[j]
+		j = j-1
+
+	# Seteo las Y
+	for i in range(longY):
+		matrizDeCoeficientes[i][1] = listaY[y]
+		y = y-1
+
+	# Calculo las diferencias
+	for i in range(1, longX):
+		k = i - 1
+		for j in range(longX - i):
+			matrizDeCoeficientes[j][i + 1] = (matrizDeCoeficientes[j + 1][i] - matrizDeCoeficientes[j][i]) / (
+						matrizDeCoeficientes[j + 1 + k][0] - matrizDeCoeficientes[j][0])
+
+#	print(matrizDeCoeficientes)
+
+	raices = 1
+	pol = 0
+	for k in range(longX):
+		for i in range(k):
+			raices = np.poly1d(matrizDeCoeficientes[i][0], True) * raices
+
+		pol = pol + raices * matrizDeCoeficientes[0][k + 1]
+		raices = 1
+		print(pol)
+
+	print(especializar(pol, 1))
+
+
 def newtonProgre(listaX, listaY):
 	matrizDeCoeficientes = []
 
