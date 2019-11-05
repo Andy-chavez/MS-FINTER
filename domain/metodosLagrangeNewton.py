@@ -44,6 +44,11 @@ def newtonProgre(listaX, listaY):
 		raices = 1
 		print(pol)
 
+	print(especializar(pol, 1))
+
+def especializar(pol, punto):
+	return pol(punto)
+
 #main para ir haciendo pruebitas
 def main():
 	newtonProgre([1,2,3,4],[4,15,40,85])
@@ -54,3 +59,4 @@ if __name__ == "__main__":
 #import numpy as np --> np.NombreDeFuncionDeNumpy --> Te deja usar la funcion
 #poly1d([1,2],True) genera el polinomio de las raices [1,2]
 #poly1d([1,2]) arma el polinomio con esos coeficientes (x+2)(decreciente)
+#Especializar --> pol(punto)
