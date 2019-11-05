@@ -53,7 +53,6 @@ def newtonRegre(listaX, listaY):
 
 	print(especializar(pol, 1))
 
-
 def newtonProgre(listaX, listaY):
 	matrizDeCoeficientes = []
 
@@ -92,9 +91,23 @@ def newtonProgre(listaX, listaY):
 def especializar(pol, punto):
 	return pol(punto)
 
+def lagrange(listaX,listaY):
+	p = 0
+	longX = len(listaX)
+	lagrangeDePto = 1
+
+	for i in range(longX):
+		for j in range(longX):
+			if i == j:
+				continue
+			else:
+				lagrangeDePto = (lagrangeDePto * np.poly1d(listaX[j],True)/(listaX[i]-listaX[j]))
+		p = p + lagrangeDePto*listaY[i]
+	print(p)
+
 #main para ir haciendo pruebitas
 def main():
-	newtonProgre([1,2,3,4],[4,15,40,85])
+	lagrange([1,2,3],[3,7,13])
 
 if __name__ == "__main__":
     main()
