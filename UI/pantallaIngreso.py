@@ -36,5 +36,5 @@ class PantallaIngreso:
 		return True
 
 	def cerrarVentana(self):
-		self.instanciaDeMetodo.agregarPunto(self.xAxisEntry,self.yAxisEntry)
+		self.instanciaDeMetodo.agregarPunto(int(self.xAxisEntry.get()),int(self.yAxisEntry.get()))
 		self.ingreso_window.destroy()
