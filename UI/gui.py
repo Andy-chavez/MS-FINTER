@@ -25,7 +25,7 @@ class Gui:
         tab_control.pack(expand=True, fill=BOTH)
 
     def configure_lagrange_window(self):
-        LagrangeGui(self.lagrange_window)
+        LagrangeGui(self.lagrange_window, self.window)
         
     def configure_newton_window(self):
         NewtonGui(self.newton_window)
