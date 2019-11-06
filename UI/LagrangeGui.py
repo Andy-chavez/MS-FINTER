@@ -3,6 +3,10 @@ from tkinter import ttk
 from pantallaIngreso import PantallaIngreso
 
 class LagrangeGui:
+
+    puntosEnX = []
+    puntosEnY = []
+
     root = NotImplemented
     def __init__(self, l_window, window):
         self.lagrange_window = l_window
@@ -15,7 +19,8 @@ class LagrangeGui:
         ttk.Button(self.lagrange_window, text='Realizar').pack(side=BOTTOM, fill=BOTH, padx=5, pady=5)
 
     def agregarPunto(self,x,y):
-        pass
+        self.puntosEnX.append(x)
+        self.puntosEnY.append(y)
 
     def abrirVentanaIngreso(self):
         PantallaIngreso(self, self.root)
