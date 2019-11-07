@@ -91,7 +91,7 @@ def especializar(pol, punto):
 	return pol(punto)
 
 def lagrange(listaX,listaY):
-	p = 0
+	p = np.poly1d(0.0)
 	longX = len(listaX)
 	lagrangeDePto = 1
 
@@ -103,7 +103,7 @@ def lagrange(listaX,listaY):
 				lagrangeDePto = (lagrangeDePto * np.poly1d([listaX[j]],True)/(listaX[i]-listaX[j]))
 		p = p + lagrangeDePto*listaY[i]
 		lagrangeDePto = 1
-	print(p)
+	return p
 
 #main para ir haciendo pruebitas
 	
