@@ -43,7 +43,10 @@ class LagrangeGui:
         
 
     def realizarMetodo(self):
-        SolucionGui(self.root, lagrange(self.puntosEnX, self.puntosEnY), False, False, False)
+        SolucionGui(self, self.root, True, True)
 
     def abrirVentanaIngreso(self):
         PantallaIngreso(self, self.root)
+    
+    def miMetodo(self, funcion):
+        return lagrange(self.puntosEnX, self.puntosEnY, funcion)

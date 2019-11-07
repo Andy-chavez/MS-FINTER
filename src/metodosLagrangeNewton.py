@@ -90,7 +90,7 @@ def newtonProgre(listaX, listaY):
 def especializar(pol, punto):
 	return pol(punto)
 
-def lagrange(listaX,listaY):
+def lagrange(listaX,listaY,mostrador):
 	p = np.poly1d(0.0)
 	longX = len(listaX)
 	lagrangeDePto = 1
@@ -102,6 +102,7 @@ def lagrange(listaX,listaY):
 			else:
 				lagrangeDePto = (lagrangeDePto * np.poly1d([listaX[j]],True)/(listaX[i]-listaX[j]))
 		p = p + lagrangeDePto*listaY[i]
+		mostrador(i, p)
 		lagrangeDePto = 1
 	return p
 
