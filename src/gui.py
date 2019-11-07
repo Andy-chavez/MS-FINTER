@@ -30,8 +30,6 @@ class Gui:
     def configure_newton_window(self):
         NewtonGui(self.newton_window, self.window)
 
-
-
 def main():
     Gui().initialize()
 
