@@ -7,6 +7,7 @@ class SolucionGui:
     pasos = "Pasos: "
     valorK = NotImplemented
     polinomio = NotImplemented
+    especializacion = NotImplemented
 
     def __init__(self, claseMetodo, root, equiespaciados, mostrarLosPasos):
         self.polinomio = self.realizarMetodo(claseMetodo, mostrarLosPasos)
@@ -22,10 +23,10 @@ class SolucionGui:
         self.valorK = ttk.Entry(self.solucion_window, validate='key', validatecommand=(validateDigit, '%P'))
         ttk.Label(self.solucion_window, text="especializar Polinomio en: ").pack(side=TOP, fill=BOTH, padx=5, pady=5)
         self.valorK.pack(side=TOP, fill=BOTH, padx=5, pady=5)
+        ttk.Button(self.solucion_window, text='Especializar', command=self.especializarPolinomio).pack(side=TOP, fill=BOTH, padx=5, pady=5)
+        self.especializacion = ttk.Label(self.solucion_window, text="resultado: ")
+        self.especializacion.pack(side=TOP, fill=BOTH, padx=5, pady=5)
         
-        
-        
-        ttk.Button(self.solucion_window, text='Especializar', command=self.especializarPolinomio).pack(side=BOTTOM, fill=BOTH, padx=5, pady=5)
         ttk.Button(self.solucion_window, text='Salir', command=self.solucion_window.destroy).pack(side=BOTTOM, fill=BOTH, padx=5, pady=5)
 
     def isADigit(self, text):
@@ -48,5 +49,5 @@ class SolucionGui:
         pass
 
     def especializarPolinomio(self):
-        print(especializar(self.polinomio, int(self.valorK.get())))
+        self.especializacion["text"] = "Resultado: " + str(especializar(self.polinomio, int(self.valorK.get())))
 
