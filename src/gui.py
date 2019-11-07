@@ -28,7 +28,7 @@ class Gui:
         LagrangeGui(self.lagrange_window, self.window)
         
     def configure_newton_window(self):
-        NewtonGui(self.newton_window)
+        NewtonGui(self.newton_window, self.window)
 
 
 
