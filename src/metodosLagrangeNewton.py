@@ -44,13 +44,13 @@ def newtonRegre(listaX, listaY):
 	pol = 0
 	for k in range(longX):
 		for i in range(k):
-			raices = np.poly1d(matrizDeCoeficientes[i][0], True) * raices
+			raices = np.poly1d([matrizDeCoeficientes[i][0]], True) * raices
 
 		pol = pol + raices * matrizDeCoeficientes[0][k + 1]
 		raices = 1
 		print(pol)
 
-	print(especializar(pol, 1))
+	return pol
 
 def newtonProgre(listaX, listaY):
 	matrizDeCoeficientes = []
@@ -79,13 +79,13 @@ def newtonProgre(listaX, listaY):
 	pol = 0
 	for k in range(longX):
 		for i in range(k):
-			raices = np.poly1d(matrizDeCoeficientes[i][0], True) * raices
+			raices = np.poly1d([matrizDeCoeficientes[i][0]], True) * raices
 
 		pol = pol + raices * matrizDeCoeficientes[0][k+1]
 		raices = 1
 		print(pol)
 
-	print(especializar(pol, 1))
+	return pol
 
 def especializar(pol, punto):
 	return pol(punto)
