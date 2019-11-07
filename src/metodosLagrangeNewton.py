@@ -102,7 +102,7 @@ def lagrange(listaX,listaY,mostrador):
 			else:
 				lagrangeDePto = (lagrangeDePto * np.poly1d([listaX[j]],True)/(listaX[i]-listaX[j]))
 		p = p + lagrangeDePto*listaY[i]
-		mostrador(i, p)
+		mostrador(i, lagrangeDePto)
 		lagrangeDePto = 1
 	return p
 
