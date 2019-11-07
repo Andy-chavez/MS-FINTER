@@ -24,7 +24,7 @@ class SolucionGui:
         ttk.Label(self.solucion_window, text="especializar Polinomio en: ").pack(side=TOP, fill=BOTH, padx=5, pady=5)
         self.valorK.pack(side=TOP, fill=BOTH, padx=5, pady=5)
         ttk.Button(self.solucion_window, text='Especializar', command=self.especializarPolinomio).pack(side=TOP, fill=BOTH, padx=5, pady=5)
-        self.especializacion = ttk.Label(self.solucion_window, text="resultado: ")
+        self.especializacion = ttk.Label(self.solucion_window, text="Resultado: ")
         self.especializacion.pack(side=TOP, fill=BOTH, padx=5, pady=5)
         
         ttk.Button(self.solucion_window, text='Salir', command=self.solucion_window.destroy).pack(side=BOTTOM, fill=BOTH, padx=5, pady=5)

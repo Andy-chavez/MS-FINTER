@@ -21,6 +21,7 @@ class MetodoGui:
         self.puntosLabel = ttk.Label(self.lagrange_window, text="Puntos Ingresados: { }")
         self.puntosLabel.pack(side=TOP, fill=BOTH, padx=5, pady=5)
         ttk.Label(self.lagrange_window, text="Mostrar Pasos?: ").pack(side=TOP, fill=BOTH, padx=5, pady=5)
+        self.mostrarPasos = IntVar()
         Checkbutton(self.lagrange_window, text="Check si quiere mostrar pasos.", variable=self.mostrarPasos).pack(side=TOP)
 
         ttk.Button(self.lagrange_window, text='Salir', command=self.root.destroy).pack(side=BOTTOM, fill=BOTH, padx=5, pady=5)
