@@ -1,4 +1,3 @@
-from scipy.interpolate import lagrange
 import numpy as np
 # se podra usar? de todas formas no ayuda mucho con el hecho de que hay que mostrar los pasos,
 # aparte creo que es lib externa
@@ -101,18 +100,13 @@ def lagrange(listaX,listaY):
 			if i == j:
 				continue
 			else:
-				lagrangeDePto = (lagrangeDePto * np.poly1d(listaX[j],True)/(listaX[i]-listaX[j]))
+				lagrangeDePto = (lagrangeDePto * np.poly1d([listaX[j]],True)/(listaX[i]-listaX[j]))
 		p = p + lagrangeDePto*listaY[i]
 		lagrangeDePto = 1
 	print(p)
 
 #main para ir haciendo pruebitas
-def main():
-	lagrange([1,2,3],[3,7,13])
-
-if __name__ == "__main__":
-    main()
-
+	
 #import numpy as np --> np.NombreDeFuncionDeNumpy --> Te deja usar la funcion
 #poly1d([1,2],True) genera el polinomio de las raices [1,2]
 #poly1d([1,2]) arma el polinomio con esos coeficientes (x+2)(decreciente)

@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 from pantallaIngreso import PantallaIngreso
+from metodosLagrangeNewton import *
 
 class LagrangeGui:
 
@@ -22,7 +23,7 @@ class LagrangeGui:
         Checkbutton(self.lagrange_window, text="Check si quiere mostrar pasos.", variable=self.mostrarPasos).pack(side=TOP)
 
         ttk.Button(self.lagrange_window, text='Salir', command=self.lagrange_window.destroy).pack(side=BOTTOM, fill=BOTH, padx=5, pady=5)
-        ttk.Button(self.lagrange_window, text='Realizar').pack(side=BOTTOM, fill=BOTH, padx=5, pady=5)
+        ttk.Button(self.lagrange_window, text='Realizar', command=self.realizarMetodo).pack(side=BOTTOM, fill=BOTH, padx=5, pady=5)
 
     def agregarPunto(self,x,y):
         self.puntosEnX.append(x)
@@ -39,6 +40,11 @@ class LagrangeGui:
 
         self.puntosLabel["text"] = puntosAMostrarTxt
         
+
+    def realizarMetodo(self):
+        print(self.puntosEnX)
+        print(self.puntosEnY)
+        lagrange(self.puntosEnX, self.puntosEnY)
 
     def abrirVentanaIngreso(self):
         PantallaIngreso(self, self.root)
