@@ -1,15 +1,5 @@
 import numpy as np
-# se podra usar? de todas formas no ayuda mucho con el hecho de que hay que mostrar los pasos,
-# aparte creo que es lib externa
-
-class MetodoLagrange:
-
-    def calcularPolinomio(self, ptosX, ptosY) :
-        return lagrange(ptosX, ptosY)
-
-    def especializarEnPto(self, numero) :
-        return self.calcularPolinomio(self)(numero)
-
+# ------------------- NEWTON -------------------
 def newtonRegre(listaX, listaY):
 	matrizDeCoeficientes = []
 
@@ -83,13 +73,11 @@ def newtonProgre(listaX, listaY):
 
 		pol = pol + raices * matrizDeCoeficientes[0][k+1]
 		raices = 1
-		print(pol)
+		#print(pol)
 
 	return pol
 
-def especializar(pol, punto):
-	return pol(punto)
-
+# ------------------- LAGRANGE -------------------
 def lagrange(listaX,listaY,mostrador):
 	p = np.poly1d(0.0)
 	longX = len(listaX)
@@ -106,7 +94,12 @@ def lagrange(listaX,listaY,mostrador):
 		lagrangeDePto = 1
 	return p
 
-#main para ir haciendo pruebitas
+# ------------------- GENERALES -------------------
+def especializar(pol, punto):
+	return pol(punto)
+
+def determinarGradoDePol(pol): #Alguno me lo testea porfi?
+	return len(np.roots(pol))
 	
 #import numpy as np --> np.NombreDeFuncionDeNumpy --> Te deja usar la funcion
 #poly1d([1,2],True) genera el polinomio de las raices [1,2]
