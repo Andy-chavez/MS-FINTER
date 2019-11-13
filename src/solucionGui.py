@@ -19,7 +19,7 @@ class SolucionGui:
         ttk.Label(self.solucion_window, text="Son Equiespaciados: {}".format(equiespaciados)).pack(side=TOP, fill=BOTH, padx=5, pady=5)
         ttk.Label(self.solucion_window, text="Grado: {}".format(self.polinomio.order)).pack(side=TOP, fill=BOTH, padx=5, pady=5)
         ttk.Label(self.solucion_window, text=self.pasos).pack(side=TOP, fill=BOTH, padx=5, pady=5)
-        ttk.Label(self.solucion_window, text="Resultado Final: {}".format(str(self.polinomio))).pack(side=TOP, fill=BOTH, padx=5, pady=5)
+        ttk.Label(self.solucion_window, text="Resultado Final: \n{}".format(str(self.polinomio))).pack(side=TOP, fill=BOTH, padx=5, pady=5)
         self.valorK = ttk.Entry(self.solucion_window, validate='key', validatecommand=(validateDigit, '%P'))
         ttk.Label(self.solucion_window, text="Especializar Polinomio en: ").pack(side=TOP, fill=BOTH, padx=5, pady=5)
         self.valorK.pack(side=TOP, fill=BOTH, padx=5, pady=5)
@@ -43,7 +43,7 @@ class SolucionGui:
             return claseMetodo.miMetodo(self.pase)
 
     def agregarPasos(self, paso, polinomio):
-        self.pasos += "\nPaso {0}: {1}\n".format(str(paso), str(polinomio))
+        self.pasos += "\nPaso {0}:\n   {1}\n".format(str(paso), str(polinomio))
 
     def pase(self, paso, polinomio):
         pass
