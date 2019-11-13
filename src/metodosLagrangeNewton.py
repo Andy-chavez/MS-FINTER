@@ -97,9 +97,6 @@ def lagrange(listaX,listaY,mostrador):
 # ------------------- GENERALES -------------------
 def especializar(pol, punto):
 	return pol(punto)
-
-def determinarGradoDePol(pol): #Alguno me lo testea porfi?
-	return len(np.roots(pol))
 	
 #import numpy as np --> np.NombreDeFuncionDeNumpy --> Te deja usar la funcion
 #poly1d([1,2],True) genera el polinomio de las raices [1,2]

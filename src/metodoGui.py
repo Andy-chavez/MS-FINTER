@@ -20,9 +20,9 @@ class MetodoGui:
         ttk.Button(self.method_window, text='Ingresar', command=self.abrirVentanaIngreso).pack(side=TOP, fill=BOTH, padx=5, pady=5)
         self.puntosLabel = ttk.Label(self.method_window, text="Puntos Ingresados: { }")
         self.puntosLabel.pack(side=TOP, fill=BOTH, padx=5, pady=5)
-        ttk.Label(self.method_window, text="Mostrar Pasos?: ").pack(side=TOP, fill=BOTH, padx=5, pady=5)
+        ttk.Label(self.method_window, text="Seleccione si desea ver los pasos: ").pack(side=TOP, fill=BOTH, padx=5, pady=5)
         self.mostrarPasos = IntVar()
-        Checkbutton(self.method_window, text="Check si quiere mostrar pasos.", variable=self.mostrarPasos).pack(side=TOP)
+        Checkbutton(self.method_window, text="Mostrar pasos", variable=self.mostrarPasos).pack(side=TOP, anchor = "center")#, padx = 10, pady = 10) 
 
         ttk.Button(self.method_window, text='Salir', command=self.root.destroy).pack(side=BOTTOM, fill=BOTH, padx=5, pady=5)
         ttk.Button(self.method_window, text='Realizar', command=self.realizarMetodo).pack(side=BOTTOM, fill=BOTH, padx=5, pady=5)

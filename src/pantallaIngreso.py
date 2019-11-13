@@ -1,5 +1,6 @@
 from tkinter import *
 from tkinter import ttk
+from tkinter import messagebox
 
 class PantallaIngreso:
 
@@ -14,7 +15,7 @@ class PantallaIngreso:
 	def configure_ingreso_window(self, instanciaDeMetodo, window):
 		self.ingreso_window = Toplevel(window)
 		self.instanciaDeMetodo = instanciaDeMetodo
-		self.ingreso_window.geometry('500x500')
+		self.ingreso_window.geometry('300x200')
 		self.ingreso_window.title("FINTER")
 		validateDigit = self.ingreso_window.register(self.isADigit)
 		self.xAxisEntry = ttk.Entry(self.ingreso_window, validate='key', validatecommand=(validateDigit, '%P'))
@@ -32,9 +33,13 @@ class PantallaIngreso:
 		try:
 			float(text)
 		except ValueError:
+			messagebox.showinfo("Error", "Ingreso invalido. Pruebe ingresando números.")
 			return False
 		return True
 
 	def cerrarVentana(self):
+		if(int(self.xAxisEntry.get()=='') or int(self.xAxisEntry.get()=='')):
+			messagebox.showerror("Error", "Ingreso invalido. Pruebe ingresando números en ambos campos.")
+			self.ingreso_window.destroy()
 		self.instanciaDeMetodo.agregarPunto(int(self.xAxisEntry.get()),int(self.yAxisEntry.get()))
 		self.ingreso_window.destroy()

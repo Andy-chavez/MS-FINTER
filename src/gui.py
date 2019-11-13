@@ -15,7 +15,7 @@ class Gui:
         self.window.mainloop()
 
     def configure_window(self):
-        self.window.geometry('500x500')
+        self.window.geometry('450x400')
         self.window.title("FINTER")
         tab_control = ttk.Notebook(self.window)
         self.lagrange_window = ttk.Frame(tab_control)
