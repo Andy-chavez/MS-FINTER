@@ -26,7 +26,7 @@ class NewtonGui(MetodoGui):
             equiespaciados = (diferenciaEnI == diferencia) and equiespaciados
         if equiespaciados:
             ptosEquiespaciados = "Si"
-        SolucionGui(self, self.root, ptosEquiespaciados, self.mostrarPasos.get())
+        SolucionGui(self, self.root, ptosEquiespaciados, self.mostrarPasos.get(), self.puntosEnX, self.puntosEnY)
 
     def miMetodo(self, funcion):
         if self.metodoNewton == "Regresivo":
