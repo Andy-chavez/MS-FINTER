@@ -38,8 +38,8 @@ class PantallaIngreso:
 		return True
 
 	def cerrarVentana(self):
-		if(int(self.xAxisEntry.get()=='') or int(self.xAxisEntry.get()=='')):
+		if(self.yAxisEntry.get()=='' or self.xAxisEntry.get()==''):
 			messagebox.showerror("Error", "Ingreso invalido. Pruebe ingresando números en ambos campos.")
-			self.ingreso_window.destroy()
+			return
 		self.instanciaDeMetodo.agregarPunto(int(self.xAxisEntry.get()),int(self.yAxisEntry.get()))
 		self.ingreso_window.destroy()
