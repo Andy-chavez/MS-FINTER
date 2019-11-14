@@ -18,18 +18,21 @@ class NewtonGui(MetodoGui):
 
     def realizarMetodo(self):
         equiespaciados = True
+        ptosEquiespaciados = "No"
         if(len(self.puntosEnX) > 1):
             diferencia = self.modulo(self.puntosEnX[0] - self.puntosEnX[1])
         for i in range (len(self.puntosEnX) - 1):
             diferenciaEnI = self.modulo(self.puntosEnX[i] - self.puntosEnX[i+1])
             equiespaciados = (diferenciaEnI == diferencia) and equiespaciados
-        SolucionGui(self, self.root, equiespaciados, self.mostrarPasos.get())
+        if equiespaciados:
+            ptosEquiespaciados = "Si"
+        SolucionGui(self, self.root, ptosEquiespaciados, self.mostrarPasos.get())
 
     def miMetodo(self, funcion):
         if self.metodoNewton == "Regresivo":
-            return newtonRegre(self.puntosEnX, self.puntosEnY)
+            return newtonRegre(self.puntosEnX, self.puntosEnY,funcion)
         else:
-            return newtonProgre(self.puntosEnX, self.puntosEnY)
+            return newtonProgre(self.puntosEnX, self.puntosEnY, funcion)
 
     def modulo(self, numero):
         if(numero < 0):

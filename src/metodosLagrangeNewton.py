@@ -1,6 +1,6 @@
 import numpy as np
 # ------------------- NEWTON -------------------
-def newtonRegre(listaX, listaY):
+def newtonRegre(listaX, listaY, mostrador):
 	matrizDeCoeficientes = []
 
 	longX = len(listaX)
@@ -28,6 +28,7 @@ def newtonRegre(listaX, listaY):
 			matrizDeCoeficientes[j][i + 1] = (matrizDeCoeficientes[j + 1][i] - matrizDeCoeficientes[j][i]) / (
 						matrizDeCoeficientes[j + 1 + k][0] - matrizDeCoeficientes[j][0])
 
+	mostrador("- Matriz de Coeficientes", matrizDeCoeficientes)
 #	print(matrizDeCoeficientes)
 
 	raices = 1
@@ -42,7 +43,7 @@ def newtonRegre(listaX, listaY):
 
 	return pol
 
-def newtonProgre(listaX, listaY):
+def newtonProgre(listaX, listaY, mostrador):
 	matrizDeCoeficientes = []
 
 	longX = len(listaX)
@@ -64,6 +65,8 @@ def newtonProgre(listaX, listaY):
 		k = i - 1
 		for j in range (longX - i):
 			matrizDeCoeficientes[j][i+1] = (matrizDeCoeficientes[j+1][i] - matrizDeCoeficientes[j][i])/(matrizDeCoeficientes[j+1+k][0] - matrizDeCoeficientes[j][0])
+	
+	mostrador("- Matriz de Coeficientes", matrizDeCoeficientes)
 
 	raices = 1
 	pol = 0
