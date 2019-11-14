@@ -29,7 +29,7 @@ class MetodoGui:
         Checkbutton(self.method_window, text="Mostrar pasos", variable=self.mostrarPasos).pack(side=TOP, anchor = "center")#, padx = 10, pady = 10) 
 
         ttk.Button(self.method_window, text='Salir', command=self.root.destroy).pack(side=BOTTOM, fill=BOTH, padx=5, pady=5)
-        ttk.Button(self.method_window, text='Realizar Interpolación', command=self.realizarMetodo).pack(side=BOTTOM, fill=BOTH, padx=5, pady=5)
+        ttk.Button(self.method_window, text='Realizar Interpolacion', command=self.realizarMetodo).pack(side=BOTTOM, fill=BOTH, padx=5, pady=5)
 
     def removerTodosLosPuntos(self):
         self.puntosEnX = []

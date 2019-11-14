@@ -37,13 +37,13 @@ class PantallaIngreso:
 				float(text)
 				break
 			except ValueError:
-				messagebox.showerror("Error", "Ingreso invalido. Pruebe ingresando números.")
+				messagebox.showerror("Error", "Ingreso invalido. Pruebe ingresando numeros.")
 				return False
 			return True
 
 	def cerrarVentana(self):
 		if(self.yAxisEntry.get()=='' or self.xAxisEntry.get()==''):
-			messagebox.showerror("Error", "Ingreso invalido. Pruebe ingresando números en ambos campos.")
+			messagebox.showerror("Error", "Ingreso invalido. Pruebe ingresando numeros en ambos campos.")
 			return
 		self.instanciaDeMetodo.agregarPunto(int(self.xAxisEntry.get()),int(self.yAxisEntry.get()))
 		self.ingreso_window.destroy()
@@ -110,7 +110,7 @@ class SolucionGui:
             return
 
         #self.polinomio = self.realizarMetodo(claseMetodo, mostrarLosPasos)
-
+        #scrollbar = tk.Scrollbar(self.solucion_window)
         self.solucion_window = Toplevel(root)
         self.solucion_window.geometry('500x500')
         self.solucion_window.title("FINTER")

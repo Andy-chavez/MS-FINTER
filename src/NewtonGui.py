@@ -13,7 +13,7 @@ class NewtonGui(MetodoGui):
         elecciones = {"Regresivo", "Progresivo"}
         self.metodoNewton.set("Regresivo")
         popupMenu = OptionMenu(self.method_window, self.metodoNewton, *elecciones)
-        ttk.Label(self.method_window, text="Elija un método a utilizar").pack(side=TOP, fill=BOTH, padx=5, pady=5)
+        ttk.Label(self.method_window, text="Elija un metodo a utilizar").pack(side=TOP, fill=BOTH, padx=5, pady=5)
         popupMenu.pack(side=TOP, fill=BOTH, padx=5, pady=5)
 
     def realizarMetodo(self):

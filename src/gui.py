@@ -20,8 +20,8 @@ class Gui:
         tab_control = ttk.Notebook(self.window)
         self.lagrange_window = ttk.Frame(tab_control)
         self.newton_window = ttk.Frame(tab_control)
-        tab_control.add(self.lagrange_window, text='Método Lagrange')
-        tab_control.add(self.newton_window, text='Método Newton-Gregory')
+        tab_control.add(self.lagrange_window, text='Metodo Lagrange')
+        tab_control.add(self.newton_window, text='Metodo Newton-Gregory')
         tab_control.pack(expand=True, fill=BOTH)
         
     def configure_lagrange_window(self):
