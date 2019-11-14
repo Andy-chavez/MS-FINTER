@@ -101,7 +101,15 @@ class SolucionGui:
         self.metodoClase = claseMetodo
         self.mostrarPasos = mostrarLosPasos
 
+        try:
+            self.realizarMetodo(claseMetodo, mostrarLosPasos)
+        except:
+            messagebox.showinfo("Error", "hubo un error al realizar el metodo")
+            return
+
+        print(self.polinomio)
         self.polinomio = self.realizarMetodo(claseMetodo, mostrarLosPasos)
+
         self.solucion_window = Toplevel(root)
         self.solucion_window.geometry('500x500')
         self.solucion_window.title("FINTER")
@@ -164,7 +172,12 @@ class SolucionGui:
         self.puntosEnX.append(x)
         self.puntosEnY.append(y)
         self.formatearPuntos()
-        polinomioNuevo = self.realizarMetodo(self.metodoClase, self.mostrarPasos)
+        try:
+            polinomioNuevo = self.realizarMetodo(self.metodoClase, self.mostrarPasos)
+        except:
+            messagebox.showinfo("Error", "hubo un error al realizar el metodo de nuevo")
+            return
+
         self.solucion["text"] = "Resultado Final: \n{}".format(str(polinomioNuevo))
         self.compararPolinomios(self.polinomio, polinomioNuevo)
         self.polinomio = polinomioNuevo
@@ -179,7 +192,11 @@ class SolucionGui:
         self.puntosEnX.remove(puntoARemover[0])
         self.puntosEnY.remove(puntoARemover[1])
         self.formatearPuntos()
-        polinomioNuevo = self.realizarMetodo(self.metodoClase, self.mostrarPasos)
+        try:
+            polinomioNuevo = self.realizarMetodo(self.metodoClase, self.mostrarPasos)
+        except:
+            messagebox.showinfo("Error", "hubo un error al realizar el metodo de nuevo")
+            return
         self.solucion["text"] = "Resultado Final: \n{}".format(str(polinomioNuevo))
         self.compararPolinomios(self.polinomio, polinomioNuevo)
         self.polinomio = polinomioNuevo

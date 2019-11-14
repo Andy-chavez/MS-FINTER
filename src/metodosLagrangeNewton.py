@@ -1,4 +1,5 @@
 import numpy as np
+np.seterr(all='raise')
 # ------------------- NEWTON -------------------
 def newtonRegre(listaX, listaY, mostrador):
 	matrizDeCoeficientes = []
