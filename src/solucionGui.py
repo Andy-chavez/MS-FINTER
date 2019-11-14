@@ -32,12 +32,14 @@ class PantallaIngreso:
 		ttk.Button(self.ingreso_window, text='Aceptar', command=self.cerrarVentana).pack(side=BOTTOM, fill=BOTH, padx=5, pady=5)
 
 	def isADigit(self, text):
-		try:
-			float(text)
-		except ValueError:
-			messagebox.showinfo("Error", "Ingreso invalido. Pruebe ingresando números.")
-			return False
-		return True
+		while(text!= '\b'):
+			try:
+				float(text)
+				break
+			except ValueError:
+				messagebox.showerror("Error", "Ingreso invalido. Pruebe ingresando números.")
+				return False
+			return True
 
 	def cerrarVentana(self):
 		if(self.yAxisEntry.get()=='' or self.xAxisEntry.get()==''):
@@ -53,7 +55,7 @@ class PantallaRemover:
     
     def __init__(self,instanciaDeMetodo, window, puntosEnX, puntosEnY):
         if(not puntosEnX):
-            messagebox.showinfo("Error", "No hay puntos para remover")
+            messagebox.showerror("Error", "No hay puntos para remover")
             return
         self.configure_remover_window(instanciaDeMetodo, window, puntosEnX, puntosEnY)
 
@@ -104,7 +106,7 @@ class SolucionGui:
         try:
             self.realizarMetodo(claseMetodo, mostrarLosPasos)
         except:
-            messagebox.showinfo("Error", "hubo un error al realizar el metodo")
+            messagebox.showerror("Error", "hubo un error al realizar el metodo")
             return
 
         print(self.polinomio)
@@ -175,7 +177,7 @@ class SolucionGui:
         try:
             polinomioNuevo = self.realizarMetodo(self.metodoClase, self.mostrarPasos)
         except:
-            messagebox.showinfo("Error", "hubo un error al realizar el metodo de nuevo")
+            messagebox.showerror("Error", "hubo un error al realizar el metodo de nuevo")
             return
 
         self.solucion["text"] = "Resultado Final: \n{}".format(str(polinomioNuevo))
@@ -195,7 +197,7 @@ class SolucionGui:
         try:
             polinomioNuevo = self.realizarMetodo(self.metodoClase, self.mostrarPasos)
         except:
-            messagebox.showinfo("Error", "hubo un error al realizar el metodo de nuevo")
+            messagebox.showerror("Error", "hubo un error al realizar el metodo de nuevo")
             return
         self.solucion["text"] = "Resultado Final: \n{}".format(str(polinomioNuevo))
         self.compararPolinomios(self.polinomio, polinomioNuevo)
