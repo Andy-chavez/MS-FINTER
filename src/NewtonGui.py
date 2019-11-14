@@ -17,12 +17,13 @@ class NewtonGui(MetodoGui):
         popupMenu.pack(side=TOP, fill=BOTH, padx=5, pady=5)
 
     def realizarMetodo(self):
+        puntosOrdenados = sorted(self.puntosEnX)
         equiespaciados = True
         ptosEquiespaciados = "No"
-        if(len(self.puntosEnX) > 1):
-            diferencia = self.modulo(self.puntosEnX[0] - self.puntosEnX[1])
+        if(len(puntosOrdenados) > 1):
+            diferencia = self.modulo(puntosOrdenados[0] - puntosOrdenados[1])
         for i in range (len(self.puntosEnX) - 1):
-            diferenciaEnI = self.modulo(self.puntosEnX[i] - self.puntosEnX[i+1])
+            diferenciaEnI = self.modulo(puntosOrdenados[i] - puntosOrdenados[i+1])
             equiespaciados = (diferenciaEnI == diferencia) and equiespaciados
         if equiespaciados:
             ptosEquiespaciados = "Si"
