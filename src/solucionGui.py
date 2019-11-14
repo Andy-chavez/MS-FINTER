@@ -96,6 +96,7 @@ class SolucionGui:
     especializacion = NotImplemented
     puntosEnX = []
     puntosEnY = []
+    pasosDelMetodo = []
 
     def __init__(self, claseMetodo, root, equiespaciados, mostrarLosPasos, unosPuntosEnX, unosPuntosEnY):
         self.puntosEnX = unosPuntosEnX
@@ -110,7 +111,6 @@ class SolucionGui:
             return
 
         #self.polinomio = self.realizarMetodo(claseMetodo, mostrarLosPasos)
-        #scrollbar = tk.Scrollbar(self.solucion_window)
         self.solucion_window = Toplevel(root)
         self.solucion_window.geometry('500x500')
         self.solucion_window.title("FINTER")
@@ -122,7 +122,17 @@ class SolucionGui:
 
         ttk.Label(self.solucion_window, text="Son Equiespaciados: {}".format(equiespaciados)).pack(side=TOP, fill=BOTH, padx=5, pady=5)
         ttk.Label(self.solucion_window, text="Grado: {}".format(self.polinomio.order)).pack(side=TOP, fill=BOTH, padx=5, pady=5)
-        ttk.Label(self.solucion_window, text=self.pasos).pack(side=TOP, fill=BOTH, padx=5, pady=5)
+        
+        if(self.mostrarPasos):
+            scrollbar = Scrollbar(self.solucion_window)
+            scrollbar.pack( side = RIGHT, fill = Y )
+            listaDePasos = Listbox(self.solucion_window, yscrollcommand = scrollbar.set )
+            for i in range(len(self.pasosDelMetodo)):
+               listaDePasos.insert(END,self.pasosDelMetodo[i])
+            listaDePasos.pack( side = RIGHT, fill = BOTH, padx=5, pady=5 )
+            scrollbar.config( command = listaDePasos.yview )
+            #ttk.Label(self.solucion_window, text=self.pasos).pack(side=TOP, fill=BOTH, padx=5, pady=5)
+        
         self.solucion = ttk.Label(self.solucion_window, text="Resultado Final: \n{}".format(str(self.polinomio)))
         self.solucion.pack(side=TOP, fill=BOTH, padx=5, pady=5)
         self.valorK = ttk.Entry(self.solucion_window, validate='key', validatecommand=(validateDigit, '%P'))
@@ -158,13 +168,15 @@ class SolucionGui:
         return True
 
     def realizarMetodo(self, claseMetodo, mostrarPasos):
+        self.pasosDelMetodo = []
         if mostrarPasos:
             return claseMetodo.miMetodo(self.agregarPasos)
         else:
             return claseMetodo.miMetodo(self.pase)
 
     def agregarPasos(self, paso, polinomio):
-        self.pasos += "\nPaso {0}:\n  {1}\n".format(str(paso), str(polinomio))
+        #self.pasos += "\nPaso {0}:\n  {1}\n".format(str(paso), str(polinomio))
+        self.pasosDelMetodo.append("Paso " + str(paso) + ":\n" + str(polinomio) + "\n")
 
     def pase(self, paso, polinomio):
         pass
@@ -176,7 +188,7 @@ class SolucionGui:
         try:
             polinomioNuevo = self.realizarMetodo(self.metodoClase, self.mostrarPasos)
         except:
-            messagebox.showerror("Error", "hubo un error al realizar el metodo de nuevo")
+            messagebox.showerror("Error", "Hubo un error al realizar el metodo de nuevo")
             return
 
         self.solucion["text"] = "Resultado Final: \n{}".format(str(polinomioNuevo))
