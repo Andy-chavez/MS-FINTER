@@ -1,8 +1,10 @@
 from tkinter import *
 from tkinter import ttk
 from pantallaIngreso import PantallaIngreso
+from pantallaRemover import PantallaRemover
 from solucionGui import SolucionGui
 from metodosLagrangeNewton import *
+
 
 class MetodoGui:
 
@@ -17,7 +19,10 @@ class MetodoGui:
         self.root = window
 
         ttk.Label(self.method_window, text="Ingrese punto en el plano: ").pack(side=TOP, fill=BOTH, padx=5, pady=5)
-        ttk.Button(self.method_window, text='Ingresar', command=self.abrirVentanaIngreso).pack(side=TOP, fill=BOTH, padx=5, pady=5)
+        ttk.Button(self.method_window, text='Ingresar Punto', command=self.abrirVentanaIngreso).pack(side=TOP, fill=BOTH, padx=5, pady=5)
+
+        ttk.Button(self.method_window, text='Remover Punto', command=self.abrirVentanaRemover).pack(side=TOP, fill=BOTH, padx=5, pady=5)
+
         self.puntosLabel = ttk.Label(self.method_window, text="Puntos Ingresados: { }")
         self.puntosLabel.pack(side=TOP, fill=BOTH, padx=5, pady=5)
         ttk.Label(self.method_window, text="Seleccione si desea ver los pasos: ").pack(side=TOP, fill=BOTH, padx=5, pady=5)
@@ -30,6 +35,9 @@ class MetodoGui:
     def agregarPunto(self,x,y):
         self.puntosEnX.append(x)
         self.puntosEnY.append(y)
+        self.formatearPuntos()
+
+    def formatearPuntos(self):
         puntosTxt = ""
 
         for i in range(len(self.puntosEnX)):
@@ -46,6 +54,15 @@ class MetodoGui:
     def abrirVentanaIngreso(self):
         PantallaIngreso(self, self.root)
     
+    def abrirVentanaRemover(self):
+        PantallaRemover(self, self.root, self.puntosEnX, self.puntosEnY)
+
+    def removerPunto(self, puntoARemover):
+        self.puntosEnX.remove(puntoARemover[0])
+        self.puntosEnY.remove(puntoARemover[1])
+        self.formatearPuntos()
+        
+
     def realizarMetodo(self):
         pass
     
