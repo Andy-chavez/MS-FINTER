@@ -104,13 +104,12 @@ class SolucionGui:
         self.mostrarPasos = mostrarLosPasos
 
         try:
-            self.realizarMetodo(claseMetodo, mostrarLosPasos)
+            self.polinomio=self.realizarMetodo(claseMetodo, mostrarLosPasos)
         except:
             messagebox.showerror("Error", "hubo un error al realizar el metodo")
             return
 
-        #print(self.polinomio)
-        self.polinomio = self.realizarMetodo(claseMetodo, mostrarLosPasos)
+        #self.polinomio = self.realizarMetodo(claseMetodo, mostrarLosPasos)
 
         self.solucion_window = Toplevel(root)
         self.solucion_window.geometry('500x500')
@@ -165,7 +164,7 @@ class SolucionGui:
             return claseMetodo.miMetodo(self.pase)
 
     def agregarPasos(self, paso, polinomio):
-        self.pasos += "\nPaso {0}:\n   {1}\n".format(str(paso), str(polinomio))
+        self.pasos += "\nPaso {0}:\n  {1}\n".format(str(paso), str(polinomio))
 
     def pase(self, paso, polinomio):
         pass

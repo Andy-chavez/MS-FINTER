@@ -67,7 +67,7 @@ def newtonProgre(listaX, listaY, mostrador):
 		for j in range (longX - i):
 			matrizDeCoeficientes[j][i+1] = (matrizDeCoeficientes[j+1][i] - matrizDeCoeficientes[j][i])/(matrizDeCoeficientes[j+1+k][0] - matrizDeCoeficientes[j][0])
 	
-	mostrador("- Matriz de Coeficientes", matrizDeCoeficientes)
+	mostrador("- Matriz de Coeficientes", np.matrix(matrizDeCoeficientes))
 
 	raices = 1
 	pol = 0
