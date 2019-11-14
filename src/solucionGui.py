@@ -109,7 +109,7 @@ class SolucionGui:
             messagebox.showerror("Error", "hubo un error al realizar el metodo")
             return
 
-        print(self.polinomio)
+        #print(self.polinomio)
         self.polinomio = self.realizarMetodo(claseMetodo, mostrarLosPasos)
 
         self.solucion_window = Toplevel(root)
