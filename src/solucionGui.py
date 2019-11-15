@@ -131,7 +131,8 @@ class SolucionGui:
             scrollbar.config( command = listaDePasos.yview )
             #ttk.Label(self.solucion_window, text=self.pasos).pack(side=TOP, fill=BOTH, padx=5, pady=5)
         
-        self.solucion = ttk.Label(self.solucion_window, text="Resultado Final: \n{}".format(str(self.polinomio)))
+        
+        self.solucion = ttk.Label(self.solucion_window, text="Resultado Final: \t{}\n\t\t".format(self.polinomioParseadoParaListBox(str(self.polinomio).splitlines()[0].replace(' ', ''), str(self.polinomio).splitlines()[1])))
         self.solucion.pack(side=TOP, fill=BOTH, padx=5, pady=5)
         self.valorK = ttk.Entry(self.solucion_window, validate='key', validatecommand=(validateDigit, '%P'))
         ttk.Label(self.solucion_window, text="Especializar Polinomio en: ").pack(side=TOP, fill=BOTH, padx=5, pady=5)
@@ -174,7 +175,19 @@ class SolucionGui:
 
     def agregarPasos(self, paso, polinomio):
         #self.pasos += "\nPaso {0}:\n  {1}\n".format(str(paso), str(polinomio))
-        self.pasosDelMetodo.append("Paso/diferencia " + str(paso) + ":\n" + str(polinomio) + "\n")
+        self.pasosDelMetodo.append("\n \n Paso/diferencia " + str(paso))
+        self.pasosDelMetodo.append(self.polinomioParseadoParaListBox(str(polinomio).splitlines()[0].replace(' ', ''), str(polinomio).splitlines()[1]))
+
+    def polinomioParseadoParaListBox(self, potencias, polinomio):
+        polinomioSpliteado = polinomio.split("x")
+        
+        for i in range(len(polinomioSpliteado)):
+            if i >= len(potencias):
+                break
+            else:
+                polinomioSpliteado[i+1] = "^" + potencias[i] + polinomioSpliteado[i+1]
+
+        return "x".join(polinomioSpliteado)
 
     def pase(self, paso, polinomio):
         pass
