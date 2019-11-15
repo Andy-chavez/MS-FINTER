@@ -6,45 +6,48 @@ from tkinter import messagebox
 
 class PantallaIngreso:
 
-	xAxisEntry = NotImplemented
-	yAxisEntry = NotImplemented
-	ingreso_window = NotImplemented
-	instanciaDeMetodo = NotImplemented
+    xAxisEntry = NotImplemented
+    yAxisEntry = NotImplemented
+    ingreso_window = NotImplemented
+    instanciaDeMetodo = NotImplemented
 
-	def __init__(self,instanciaDeMetodo, window):
-		self.configure_ingreso_window(instanciaDeMetodo, window)
+    def __init__(self,instanciaDeMetodo, window):
+        self.configure_ingreso_window(instanciaDeMetodo, window)
 
-	def configure_ingreso_window(self, instanciaDeMetodo, window):
-		self.ingreso_window = Toplevel(window)
-		self.instanciaDeMetodo = instanciaDeMetodo
-		self.ingreso_window.geometry('300x200')
-		self.ingreso_window.title("FINTER")
-		validateDigit = self.ingreso_window.register(self.isADigit)
-		self.xAxisEntry = ttk.Entry(self.ingreso_window, validate='key', validatecommand=(validateDigit, '%P'))
+    def configure_ingreso_window(self, instanciaDeMetodo, window):
+        self.ingreso_window = Toplevel(window)
+        self.instanciaDeMetodo = instanciaDeMetodo
+        self.ingreso_window.geometry('300x200')
+        self.ingreso_window.title("FINTER")
+        validateDigit = self.ingreso_window.register(self.isADigit)
+        self.xAxisEntry = ttk.Entry(self.ingreso_window, validate='key', validatecommand=(validateDigit, '%P'))
     
-		self.yAxisEntry = ttk.Entry(self.ingreso_window, validate='key', validatecommand=(validateDigit, '%P'))
+        self.yAxisEntry = ttk.Entry(self.ingreso_window, validate='key', validatecommand=(validateDigit, '%P'))
 
-		ttk.Label(self.ingreso_window, text="Eje x: ").pack(side=TOP, fill=BOTH, padx=5, pady=5)
-		self.xAxisEntry.pack(side=TOP, fill=BOTH, padx=5, pady=5)
-		ttk.Label(self.ingreso_window, text="Eje y: ").pack(side=TOP, fill=BOTH, padx=5, pady=5)
-		self.yAxisEntry.pack(side=TOP, fill=BOTH, padx=5, pady=5)
+        ttk.Label(self.ingreso_window, text="Eje x: ").pack(side=TOP, fill=BOTH, padx=5, pady=5)
+        self.xAxisEntry.pack(side=TOP, fill=BOTH, padx=5, pady=5)
+        ttk.Label(self.ingreso_window, text="Eje y: ").pack(side=TOP, fill=BOTH, padx=5, pady=5)
+        self.yAxisEntry.pack(side=TOP, fill=BOTH, padx=5, pady=5)
 
-		ttk.Button(self.ingreso_window, text='Aceptar', command=self.cerrarVentana).pack(side=BOTTOM, fill=BOTH, padx=5, pady=5)
+        ttk.Button(self.ingreso_window, text='Aceptar', command=self.cerrarVentana).pack(side=BOTTOM, fill=BOTH, padx=5, pady=5)
 
-	def isADigit(self, text):
-		try:
-			float(text)
-		except ValueError:
-			messagebox.showerror("Error", "Ingreso invalido. Pruebe ingresando numeros.")
-			return False
-		return True
+    
+    
+    def isADigit(self, text):
+        if(text != ''):
+            try:
+                float(text)
+            except ValueError:
+                messagebox.showerror("Error", "Ingreso invalido. Pruebe ingresando numeros.")
+                return False
+        return True
 
-	def cerrarVentana(self):
-		if(self.yAxisEntry.get()=='' or self.xAxisEntry.get()==''):
-			messagebox.showerror("Error", "Ingreso invalido. Pruebe ingresando numeros en ambos campos.")
-			return
-		self.instanciaDeMetodo.agregarPunto(int(self.xAxisEntry.get()),int(self.yAxisEntry.get()))
-		self.ingreso_window.destroy()
+    def cerrarVentana(self):
+        if(self.yAxisEntry.get()=='' or self.xAxisEntry.get()==''):
+            messagebox.showerror("Error", "Ingreso invalido. Pruebe ingresando numeros en ambos campos.")
+            return
+        self.instanciaDeMetodo.agregarPunto(int(self.xAxisEntry.get()),int(self.yAxisEntry.get()))
+        self.ingreso_window.destroy()
 
 class PantallaRemover:
 
@@ -62,7 +65,7 @@ class PantallaRemover:
         self.instanciaDeMetodo = instanciaDeMetodo
         self.remover_window.geometry('300x200')
         self.remover_window.title("FINTER")
-		
+        
         self.puntoElegido = StringVar()
 
         elecciones = self.armarLista(puntosEnX, puntosEnY)
@@ -132,7 +135,8 @@ class SolucionGui:
             scrollbar.config( command = listaDePasos.yview )
             #ttk.Label(self.solucion_window, text=self.pasos).pack(side=TOP, fill=BOTH, padx=5, pady=5)
         
-        self.solucion = ttk.Label(self.solucion_window, text="Resultado Final: \n{}".format(str(self.polinomio)))
+        
+        self.solucion = ttk.Label(self.solucion_window, text="Resultado Final: \t{}\n\t\t".format(self.polinomioParseadoParaListBox(str(self.polinomio).splitlines()[0].replace(' ', ''), str(self.polinomio).splitlines()[1])))
         self.solucion.pack(side=TOP, fill=BOTH, padx=5, pady=5)
         self.valorK = ttk.Entry(self.solucion_window, validate='key', validatecommand=(validateDigit, '%P'))
         ttk.Label(self.solucion_window, text="Especializar Polinomio en: ").pack(side=TOP, fill=BOTH, padx=5, pady=5)
@@ -175,7 +179,19 @@ class SolucionGui:
 
     def agregarPasos(self, paso, polinomio):
         #self.pasos += "\nPaso {0}:\n  {1}\n".format(str(paso), str(polinomio))
-        self.pasosDelMetodo.append("Paso/diferencia " + str(paso) + ":\n" + str(polinomio) + "\n")
+        self.pasosDelMetodo.append("\n \n Paso/diferencia " + str(paso))
+        self.pasosDelMetodo.append(self.polinomioParseadoParaListBox(str(polinomio).splitlines()[0].replace(' ', ''), str(polinomio).splitlines()[1]))
+
+    def polinomioParseadoParaListBox(self, potencias, polinomio):
+        polinomioSpliteado = polinomio.split("x")
+        
+        for i in range(len(polinomioSpliteado)):
+            if i >= len(potencias):
+                break
+            else:
+                polinomioSpliteado[i+1] = "^" + potencias[i] + polinomioSpliteado[i+1]
+
+        return "x".join(polinomioSpliteado)
 
     def pase(self, paso, polinomio):
         pass
