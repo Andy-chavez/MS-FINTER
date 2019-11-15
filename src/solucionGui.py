@@ -118,16 +118,17 @@ class SolucionGui:
         self.puntosLabel.pack(side=TOP, fill=BOTH, padx=5, pady=5)
         self.formatearPuntos()
 
-        ttk.Label(self.solucion_window, text="Son Equiespaciados: {}".format(equiespaciados)).pack(side=TOP, fill=BOTH, padx=5, pady=5)
-        ttk.Label(self.solucion_window, text="Grado: {}".format(self.polinomio.order)).pack(side=TOP, fill=BOTH, padx=5, pady=5)
+        ttk.Label(self.solucion_window, text="Son Equiespaciados: {}".format(equiespaciados)).pack(anchor = "w", side=TOP, padx=5, pady=5)
+        ttk.Label(self.solucion_window, text="Grado: {}".format(self.polinomio.order)).pack(anchor = "w",side=TOP, padx=5, pady=5)
         
         if(self.mostrarPasos):
             scrollbar = Scrollbar(self.solucion_window)
             scrollbar.pack( side = RIGHT, fill = Y )
-            listaDePasos = Listbox(self.solucion_window, yscrollcommand = scrollbar.set )
+            listaDePasos = Listbox(self.solucion_window, yscrollcommand = scrollbar.set, width = 100, height = 7)
+            #listaDePasos.place(x=0, y=0)
             for i in range(len(self.pasosDelMetodo)):
                listaDePasos.insert(END,self.pasosDelMetodo[i])
-            listaDePasos.pack( side = RIGHT, fill = BOTH, padx=5, pady=5 )
+            listaDePasos.pack( anchor = "n", padx=5, pady=5 )
             scrollbar.config( command = listaDePasos.yview )
             #ttk.Label(self.solucion_window, text=self.pasos).pack(side=TOP, fill=BOTH, padx=5, pady=5)
         
