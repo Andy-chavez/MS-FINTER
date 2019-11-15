@@ -35,6 +35,9 @@ class NewtonGui(MetodoGui):
         else:
             return newtonProgre(self.puntosEnX, self.puntosEnY, funcion)
 
+    def agregarPasos(self, paso, polinomio):
+        return str(polinomio)
+
     def modulo(self, numero):
         if(numero < 0):
             return numero * (-1)

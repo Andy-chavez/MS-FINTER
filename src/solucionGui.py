@@ -180,7 +180,7 @@ class SolucionGui:
     def agregarPasos(self, paso, polinomio):
         #self.pasos += "\nPaso {0}:\n  {1}\n".format(str(paso), str(polinomio))
         self.pasosDelMetodo.append("\n \n Paso/diferencia " + str(paso))
-        self.pasosDelMetodo.append(self.polinomioParseadoParaListBox(str(polinomio).splitlines()[0].replace(' ', ''), str(polinomio).splitlines()[1]))
+        self.pasosDelMetodo.append(self.metodoClase.agregarPasos(paso, polinomio))
 
     def polinomioParseadoParaListBox(self, potencias, polinomio):
         polinomioSpliteado = polinomio.split("x")

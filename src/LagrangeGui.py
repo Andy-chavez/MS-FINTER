@@ -22,6 +22,20 @@ class LagrangeGui(MetodoGui):
     def miMetodo(self, funcion):
         return lagrange(self.puntosEnX, self.puntosEnY, funcion)
 
+    def agregarPasos(self, paso, polinomio):
+        return self.polinomioParseadoParaListBox(str(polinomio).splitlines()[0].replace(' ', ''), str(polinomio).splitlines()[1])
+
+    def polinomioParseadoParaListBox(self, potencias, polinomio):
+        polinomioSpliteado = polinomio.split("x")
+        
+        for i in range(len(polinomioSpliteado)):
+            if i >= len(potencias):
+                break
+            else:
+                polinomioSpliteado[i+1] = "^" + potencias[i] + polinomioSpliteado[i+1]
+
+        return "x".join(polinomioSpliteado)
+
     def modulo(self, numero):
         if(numero < 0):
             return numero * (-1)

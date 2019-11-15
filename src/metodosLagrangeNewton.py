@@ -37,7 +37,7 @@ def newtonRegre(listaX, listaY, mostrador):
 #	print(matrizDeCoeficientes)
 
 	raices = 1
-	pol = 0
+	pol = np.poly1d(0.0)
 	for k in range(longX):
 		for i in range(k):
 			raices = np.poly1d([matrizDeCoeficientes[i][0]], True) * raices
@@ -78,7 +78,7 @@ def newtonProgre(listaX, listaY, mostrador):
 	#mostrador("- Matriz de Coeficientes", np.matrix(matrizDeCoeficientes))
 
 	raices = 1
-	pol = 0
+	pol = np.poly1d(0.0)
 	for k in range(longX):
 		for i in range(k):
 			raices = np.poly1d([matrizDeCoeficientes[i][0]], True) * raices
@@ -94,6 +94,8 @@ def lagrange(listaX,listaY,mostrador):
 	p = np.poly1d(0.0)
 	longX = len(listaX)
 	lagrangeDePto = 1
+	if(longX == 0):
+		raise Exception()
 
 	for i in range(longX):
 		for j in range(longX):
