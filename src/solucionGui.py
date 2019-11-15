@@ -176,7 +176,7 @@ class SolucionGui:
 
     def agregarPasos(self, paso, polinomio):
         #self.pasos += "\nPaso {0}:\n  {1}\n".format(str(paso), str(polinomio))
-        self.pasosDelMetodo.append("Paso " + str(paso) + ":\n" + str(polinomio) + "\n")
+        self.pasosDelMetodo.append("Paso/diferencia " + str(paso) + ":\n" + str(polinomio) + "\n")
 
     def pase(self, paso, polinomio):
         pass
