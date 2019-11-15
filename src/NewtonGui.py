@@ -30,7 +30,7 @@ class NewtonGui(MetodoGui):
         SolucionGui(self, self.root, ptosEquiespaciados, self.mostrarPasos.get(), self.puntosEnX, self.puntosEnY)
 
     def miMetodo(self, funcion):
-        if self.metodoNewton == "Regresivo":
+        if self.metodoNewton.get() == "Regresivo":
             return newtonRegre(self.puntosEnX, self.puntosEnY,funcion)
         else:
             return newtonProgre(self.puntosEnX, self.puntosEnY, funcion)

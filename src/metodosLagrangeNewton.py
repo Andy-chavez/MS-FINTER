@@ -23,13 +23,17 @@ def newtonRegre(listaX, listaY, mostrador):
 		y = y-1
 
 	# Calculo las diferencias
+	contador = 1
+	mostrador(0,matrizDeCoeficientes[0][1])
 	for i in range(1, longX):
 		k = i - 1
 		for j in range(longX - i):
 			matrizDeCoeficientes[j][i + 1] = (matrizDeCoeficientes[j + 1][i] - matrizDeCoeficientes[j][i]) / (
 						matrizDeCoeficientes[j + 1 + k][0] - matrizDeCoeficientes[j][0])
-
-	mostrador("- Matriz de Coeficientes", matrizDeCoeficientes)
+			if(j == 0):
+				mostrador(contador,matrizDeCoeficientes[j][i+1])
+				contador+=1
+	#mostrador("- Matriz de Coeficientes", matrizDeCoeficientes)
 #	print(matrizDeCoeficientes)
 
 	raices = 1
