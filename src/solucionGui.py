@@ -32,14 +32,12 @@ class PantallaIngreso:
 		ttk.Button(self.ingreso_window, text='Aceptar', command=self.cerrarVentana).pack(side=BOTTOM, fill=BOTH, padx=5, pady=5)
 
 	def isADigit(self, text):
-		while(text!= '\b'):
-			try:
-				float(text)
-				break
-			except ValueError:
-				messagebox.showerror("Error", "Ingreso invalido. Pruebe ingresando numeros.")
-				return False
-			return True
+		try:
+			float(text)
+		except ValueError:
+			messagebox.showerror("Error", "Ingreso invalido. Pruebe ingresando numeros.")
+			return False
+		return True
 
 	def cerrarVentana(self):
 		if(self.yAxisEntry.get()=='' or self.xAxisEntry.get()==''):
